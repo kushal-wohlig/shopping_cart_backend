@@ -13,38 +13,35 @@ export default {
         return obj
     },
 
-    getTotalCart: async(id) => {
-        let cartValue=0
+    getTotalCart: async (id) => {
+        let cartValue = 0
         let data = await Cart.find({
-            CustomerId:id,
+            CustomerId: id
         })
         console.log(data)
-        
-        let productsInCart= await Cart.aggregate([
+
+        let productsInCart = await Cart.aggregate([
             //stage 1 : filter all documents based on customer id
             {
-                $match:{CustomerId:id}
+                $match: { CustomerId: id }
             },
             //Stage 2: filter out the products from ProductId
             {
-                $lookup:{
+                $lookup: {
                     from: "Product",
                     localField: "ProductId",
-                    foreignField:"ProductId",
+                    foreignField: "ProductId",
                     as: "products"
                 }
-            },
+            }
 
             // //Stage 3: Calculating the cart value
             // {
             //     $group: { _id: null, cartValue: { $sum: "$" } }
             // }
-
         ])
-        
+
         return productsInCart
-
-
     },
     search: async (body) => {
         const pageNo = body.page

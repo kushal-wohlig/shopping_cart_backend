@@ -1,8 +1,8 @@
 import CartModel from "../models/CartModel"
 
-const router=Router()
+const router = Router()
 
-router.post("/products", async(req,res) =>{
+router.post("/products", async (req, res) => {
     try {
         const data = await CartModel.addProduct(req.body)
         res.json(data)
@@ -12,7 +12,7 @@ router.post("/products", async(req,res) =>{
     }
 })
 
-router.get("/getAllProducts", async(req,res) =>{
+router.get("/getAllProducts", async (req, res) => {
     try {
         const data = await CartModel.getTotalCart(req.params.id)
         res.json(data)
@@ -21,6 +21,5 @@ router.get("/getAllProducts", async(req,res) =>{
         res.status(500).json(error)
     }
 })
-
 
 export default router
