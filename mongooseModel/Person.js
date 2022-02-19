@@ -14,4 +14,5 @@ var schema = new Schema(
     }
 )
 schema.index({ name: 1, email: 1 }, { unique: true })
+console.log("Database created")
 export default mongoose.model("Person", schema)
