@@ -13,10 +13,10 @@ export default {
         return obj
     },
 
-    getOneCustomer: async(id) => {
+    getOneCustomer: async (id) => {
         let data = await Customer.findOne({
-            CustomerId:id,
+            CustomerId: id
         })
         return data
-    },
+    }
 }

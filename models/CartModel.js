@@ -39,7 +39,11 @@ export default {
 
             //Stage 3: Calculating the cart value
             {
-                $group: { _id:"$CustomerId", products:{ $push: "$products" }, cartValue: { $sum: "$products.price" } }
+                $group: {
+                    _id: "$CustomerId",
+                    products: { $push: "$products" },
+                    cartValue: { $sum: "$products.price" }
+                }
             }
         ])
         // console.log(productsInCart)

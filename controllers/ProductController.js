@@ -11,7 +11,7 @@ router.post("/addProducts", async (req, res) => {
     }
 })
 
-router.get("/allProducts", async(req,res) => {
+router.get("/allProducts", async (req, res) => {
     try {
         const data = await ProductModel.getAllProducts()
         res.json(data)
@@ -19,7 +19,6 @@ router.get("/allProducts", async(req,res) => {
         console.error(error)
         res.status(500).json(error)
     }
-
 })
 
 router.get(

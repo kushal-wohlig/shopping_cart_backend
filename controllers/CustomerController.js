@@ -1,7 +1,7 @@
 // import { urlencoded } from "body-parser"
 
 const router = Router()
-router.post("/addCustomer",async (req, res) => {
+router.post("/addCustomer", async (req, res) => {
     try {
         const data = await CustomerModel.addCustomer(req.body)
         res.json(data)
@@ -17,7 +17,7 @@ router.get(
             type: "object",
             properties: {
                 id: {
-                    type: "string",
+                    type: "string"
                     // format: "objectId"
                 }
             }

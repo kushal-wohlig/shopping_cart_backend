@@ -1,7 +1,7 @@
 // import Person from "../mongooseModel/Person"
 import Product from "../mongooseModel/Product"
 
-export default{
+export default {
     /**
      * This function adds one to its input.
      * @param {number} input any number
@@ -14,8 +14,8 @@ export default{
         return obj
     },
 
-    getAllProducts: async() => {
+    getAllProducts: async () => {
         const data = await Product.find()
         return data
-    },
+    }
 }
