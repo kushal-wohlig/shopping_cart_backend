@@ -14,7 +14,6 @@ export default {
     },
 
     getTotalCart: async (id) => {
-        let cartValue = 0
         let data = await Cart.find({
             CustomerId: id
         })
@@ -28,19 +27,22 @@ export default {
             //Stage 2: filter out the products from ProductId
             {
                 $lookup: {
-                    from: "Product",
+                    from: "products",
                     localField: "ProductId",
                     foreignField: "ProductId",
                     as: "products"
                 }
+            },
+            {
+                $unwind: "$products"
+            },
+
+            //Stage 3: Calculating the cart value
+            {
+                $group: { _id:"$CustomerId", products:{ $push: "$products" }, cartValue: { $sum: "$products.price" } }
             }
-
-            // //Stage 3: Calculating the cart value
-            // {
-            //     $group: { _id: null, cartValue: { $sum: "$" } }
-            // }
         ])
-
+        // console.log(productsInCart)
         return productsInCart
     },
     search: async (body) => {
