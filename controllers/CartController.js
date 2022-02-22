@@ -12,6 +12,19 @@ router.post("/products", async (req, res) => {
     }
 })
 
+router.delete("/deleteProduct/:pid/:cid", async (req, res) => {
+    try {
+        const data = await CartModel.deleteProductCart(
+            req.params.pid,
+            req.params.cid
+        )
+        res.json(data)
+    } catch (error) {
+        console.error(error)
+        res.status(500).json(error)
+    }
+})
+
 router.get("/getAllProducts/:id", async (req, res) => {
     try {
         const data = await CartModel.getTotalCart(req.params.id)

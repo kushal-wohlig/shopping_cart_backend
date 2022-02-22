@@ -1,0 +1,48 @@
+Product 
+
+POST - Add Product - http://localhost:3000/product/addProducts
+{
+    "ProductId": "Product1",
+	"price": 1000,
+	"name":"Boat Headphones",
+	"description":"Headphone with stereo sound quality"
+}
+
+Get - Get All Products - http://localhost:3000/product/allProducts
+
+Customer 
+
+Post - add customer - http://localhost:3000/customer/addCustomer
+Get -  customer details - http://localhost:3000/customer/customerdetails/Customer1
+Req
+{
+	"CustomerId": "Customer1",
+	"fname": "Kushal",
+	"lname":"Shah",
+	"phone_no": 8779681748,
+	"email":"kushalwohlig@gmail.com",
+	"password":"abc123"
+}
+Response
+{
+	"CustomerId": "Customer1",
+	"fname": "Kushal",
+	"lname": "Shah",
+	"phone_no": 8779681748,
+	"email": "kushalwohlig@gmail.com",
+	"password": "abc123",
+	"_id": "621326b4e453d7661cd397c2",
+	"__v": 0
+}
+
+
+Cart 
+Post - Add Products to cart - http://localhost:3000/cart/products
+{
+	"CustomerId": "Customer1",
+	"ProductId": "Product1"
+}
+
+Get - Get Cart Value - http://localhost:3000/cart/getAllProducts/Customer1
+
+DELETE - Delete Product from cart -  http://localhost:3000/cart/deleteProduct/Product3/Customer1

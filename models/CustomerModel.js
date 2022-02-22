@@ -18,5 +18,14 @@ export default {
             CustomerId: id
         })
         return data
+    },
+
+    loginCustomer: async (body) => {
+        let user = await Customer.find({ email: body.email })
+        if (body.password === user[0].password) {
+            return user[0].CustomerId
+        } else {
+            return -1
+        }
     }
 }
